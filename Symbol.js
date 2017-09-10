@@ -30,10 +30,8 @@ function getComplement(color){
     switch(color){
         case color_red:
             return "red";
-            break;
         case color_green:
             return "green";
-            break;
         default:
             throw new Error("none");
     }
@@ -50,7 +48,7 @@ var shapeType = {
     rectangle : Symbol()
 };
 
-function getArea(shape,options){
+function getArea(shape,options) {
     var area = 0;
     switch(shape){
         case shapeType.triangle:
@@ -65,8 +63,8 @@ function getArea(shape,options){
     return area;
 }
 
-console.log(getArea(shapeType.triangle,{width:100,height:100}));
-console.log(getArea(shapeType.rectangle,{width:100,height:100}));
+console.log(getArea(shapeType.triangle, { width:100, height:100 }));
+console.log(getArea(shapeType.rectangle, { width:100,height:100 }));
 
 
 
@@ -78,7 +76,7 @@ var a2 = Symbol.for("a");
 console.log(a0===a1); //false
 console.log(a1===a2); //true
 
-console.log(Symbol.keyFor(a0),Symbol.keyFor(a1)); //undefined "a"
+console.log(Symbol.keyFor(a0), Symbol.keyFor(a1)); //undefined "a"
 
 
 

@@ -1,7 +1,10 @@
+
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 function timeout(ms){
-    return new Promise((resolve,reject)=>{setTimeout(resolve,ms,"done");});
+    return new Promise((resolve,reject) => { setTimeout(resolve, ms, "done"); });
 }
-timeout(1000).then(value=>{console.log(value);});
+timeout(1000).then(value => { console.log(value); });
 
 
 /*异步加载图片*/
@@ -25,47 +28,47 @@ var getJSON = function(url){
         client.open("GET",url);
         client.onreadystatechange = handler;
         client.responseType = "json";
-        client.setRequestHeader("Accept","application/json");
+        client.setRequestHeader("Accept", "application/json");
         client.send(null);
-        function handler(){
-            if(this.readystate!==4){
+        function handler() {
+            if(this.readyState !== 4) {
                 return;
             }
-            if(this.status===200){
-                resolve(this.reponse);
+            if(this.status === 200) {
+                resolve(this.response);
             } else {
-                reject(new Error(this.statusText));
+                // reject(new Error(this.statusText));
             }
         }
     });
     return promise;
 };
-getJSON("/posts.json").then(function(json){
+getJSON("/posts.json").then(function(json) {
     console.log("contents:",json);
     return json;
-},function(error){
+}, function(error) {
     console.log("error:",error);
-}).then(function(json){
+}).then(function(json) {
     console.log("another json function");
 });
 
 
-var promise1 = new Promise(function(resolve,reject){
+var promise1 = new Promise(function(resolve,reject) {
     resolve("ok");
-    throw new Error("test");
+    // throw new Error("test");
 });
-promise1.then(function(value){
+promise1.then(function(value) {
     console.log(value);
-}).catch(function(error){
+}).catch(function(error) {
     console.log(error);
 });
 
 
 console.log("------------------------------");
 var p1 = Promise.resolve("hello");
-p1.then(function(s){console.log(s)}); //hello
+p1.then(function(s){ console.log(s) }); //hello
 var p2 = Promise.reject("sth wrong");
-p2.catch(function(s){console.log(s)}); //sth wrong
+p2.catch(function(s){ console.log(s) }); //sth wrong
 
 
 
