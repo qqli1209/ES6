@@ -1,0 +1,8 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "request": "^2.81.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
