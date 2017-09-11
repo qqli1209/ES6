@@ -46,7 +46,7 @@ function test(){
         var temp = 100;
     }
 }
-test(); //undefined,函数内的temp声明提升导致temp为undefined
+test(); //undefined, 函数内的temp声明提升导致temp为undefined
 
 function test1(){
     let n = 1;
