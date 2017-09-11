@@ -70,12 +70,71 @@ p2.catch(function(s){ console.log(s) }); //sth wrong
 */
 
 
+function timeout(ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms, 'done');
+  });
+}
+timeout(100).then((value) => {
+  console.log(value);
+});
 
+// once Promise is created, it will run immediately
+let promise = new Promise((resolve, reject) => {
+  console.log('promise');
+  resolve();
+});
 
+promise.then(() => {
+  console.log('resolved');
+});
 
+console.log('hi'); // promise, hi, resolved
 
+// load images async
+function loadImageAsync(url) {
+  return new Promise((resolve, reject) => {
+    var image = new Image();
+    image.onload = function(){
+      resolve(image);
+    };
+    image.onerror = function(){
+      reject(new Error('Could not load image at ' + url));
+    };
+    image.src = url;
+  });
+}
 
+//realize ajax with Promise
+function getJSON(url) {
+  var promise = new Promise((resolve, reject) => {
+    var client = new XMLHttpRequest();
+    client.open('Get', url);
+    client.onreadystatechange = handleChangeReadyState;
+    client.responseType = 'json';
+    client.setRequestHeader('Accept', 'application/json');
+    client.send();
 
+    function handleChangeReadyState() {
+      if (this.readyState !== 4) {
+        return;
+      }
+      if ((this.status >= 200 && this.status < 300) || this.status === 304) {
+        resolve(this.response);
+      } else {
+        reject(new Error(this.statusText));
+      }
+    }
+  });
+
+  return promise;
+}
+
+getJSON('/posts.json').then((json) => {
+  console.log('Contents:', json);
+}, (error) => {
+  console.error('error:', error);
+});
 
 
 
