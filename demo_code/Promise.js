@@ -122,7 +122,7 @@ function getJSON(url) {
       if ((this.status >= 200 && this.status < 300) || this.status === 304) {
         resolve(this.response);
       } else {
-        reject(new Error(this.statusText));
+        // reject(new Error(this.statusText));
       }
     }
   });
@@ -136,6 +136,13 @@ getJSON('/posts.json').then((json) => {
   console.error('error:', error);
 });
 
+
+var promises = [2, 3, 5].map(function(id) {
+  return getJSON('/post/' + id + '.json');
+});
+
+Promise.all(promises).then(function(posts){})
+.catch(function(error) {});
 
 
 
