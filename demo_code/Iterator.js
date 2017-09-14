@@ -101,8 +101,6 @@ console.log(test.next());
 console.log(test.next());
 console.log(test.next());
 
-// application
-
 
 
 
