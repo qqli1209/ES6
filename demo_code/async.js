@@ -60,12 +60,12 @@ var readFile = function(fileName) {
 };
 
 var asyncReadFile = async function () {
-  var f1 = await readFile('./1.txt');
-  var f2 = await readFile('./2.txt');
+  var f1 = await readFile('../text file/1.txt');
+  var f2 = await readFile('../text file/2.txt');
   console.log(f1.toString());
   console.log(f2.toString());
 };
-
+asyncReadFile();
 
 
 
