@@ -5,8 +5,10 @@
     "env"
   ],
   "dependencies": {
+    "es6-promise": "^4.1.1",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
+    "isomorphic-fetch": "^2.2.1",
     "request": "^2.81.0",
     "thunkify": "^2.1.2",
     "xmlhttprequest": "^1.8.0"

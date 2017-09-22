@@ -48,6 +48,8 @@ var thunkify = require("thunkify");
 var thunkify = require("thunkify");
 var fs = require('fs');
 
+import "isomorphic-fetch"
+
 var readFile = function(fileName) {
   return new Promise((resolve, reject) => {
     fs.readFile(fileName, (error, data)=> {
@@ -67,6 +69,41 @@ var asyncReadFile = async function () {
 };
 asyncReadFile();
 
+
+async function timeout(ms) {
+  await new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+async function asyncPrint(value, ms) {
+  await timeout(ms);
+  console.log(value);
+}
+
+asyncPrint('hello, world', 1000);
+
+async function test(){
+  return 'test';
+}
+
+test().then((value) => {
+  console.log(value); // test
+});
+
+async function errorTest() {
+  return new Error('error');
+}
+
+// errorTest().then(v => {console.log(v)}, e => {console.log(e)}); // error
+
+async function getTitle(url) {
+  let response = await fetch(url);
+  let html = await response.text();
+  return html.match(/<title>([\s\S]+)<\/title>/i)[1];
+}
+
+getTitle('https://tc39.github.io/ecma262/').then(console.log);
 
 
 
