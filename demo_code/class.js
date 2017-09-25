@@ -76,3 +76,17 @@ class Rectangle extends Shape {
 
 var s = new Shape(); // Shape can not be Instantiated.
 var r = new Rectangle({ x: 1, y: 2 });
+
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y);
+    this.color = color;
+  }
+
+  toString() {
+    return this.color + ' ' + super.toString();
+  }
+}
+
+var colorP1 = new ColorPoint(1, 2, 'red');
+console.log(colorP1.toString()); // red (1,2)
