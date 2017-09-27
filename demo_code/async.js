@@ -45,7 +45,6 @@ var thunkify = require("thunkify");
 
 // 2017.9.14 review
 
-var thunkify = require("thunkify");
 var fs = require('fs');
 
 import "isomorphic-fetch"

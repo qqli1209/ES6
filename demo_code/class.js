@@ -52,7 +52,7 @@ console.log(Point.staticMethod()); // This is a static method
 
 class SuperPoint extends Point {
   static staticMethod() {
-    return super.staticMethod() + ' in SuperPoint.'
+    return super.staticMethod() + ' in SuperPoint.';
   }
 }
 

@@ -111,9 +111,9 @@ function fact(n){
 console.log(fact(5));
 
 function currying(f,n){
-    return function(m){
-        return f.call(this,m,n);
-    }
+  return function(m){
+    return f.call(this,m,n);
+  };
 }
 
 
