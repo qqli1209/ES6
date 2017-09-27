@@ -55,10 +55,3 @@ m.test = function() {
   console.log('changed'); // Cannot assign to read only property 'test' of object '#<Meal>'
 }
 */
-
-
-
-
-
-
-
